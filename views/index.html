@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+  <title>Dashboard Template</title>  
+  <link href="/public/css/main.css" rel="stylesheet">
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+ 
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-sm-offset-3 col-md-12 col-md-offset-2 main">
+        <h1 class="page-header">Dashboard</h1>
+      
+        <a class="btn btn-success" href="/new">add data</a>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>gender</th>
+                <th>age</th>
+                <th>remark</th>
+                <th>handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{ each dbData }}
+              <tr>
+                <td>{{ $value.id }}</td>
+                <td>{{ $value.name }}</td>
+                <td>
+                    {{if $value.gender == 1}}
+                      female
+                    {{else}}
+                      male
+                    {{/if}}
+                </td>
+                <td>{{ $value.age }}</td>
+                <td>{{ $value.remark }}</td>
+                <td>
+                  <a href="/edit?id={{ $value.id }}">edit</a>
+                  <a href="/delete?id={{ $value.id }}" onclick="return confirm('confirm the deletion?')">delete</a>
+                </td>
+              </tr>
+              {{ /each }}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+  <title>Dashboard Template for Bootstrap</title>
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/public/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+  
+  <div class="container-fluid">
+    <div class="row">
+     
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="sub-header">edit data</h2>
+        <form action="/edit" method="post">
+        <!--  hidden id -->
+           
+          <input type="hidden" name="id" value="{{ dbData.id }}">
+          <div class="form-group">
+            <label for="">name</label>
+            <input type="text" class="form-control" id="" name="name" required minlength="2" maxlength="10" value="{{ dbData.name }}">
+          </div>
+          <div class="form-group">
+            <label for="">gender</label>
+            <div>
+              <label class="radio-inline">
+                <input type="radio" name="gender" id="" value="0" {{if dbData.gender == 0}} checked {{/if}} >male
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="gender" id="" value="1" {{if dbData.gender == 1}} checked {{/if}} > female
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="">age</label>
+            <input class="form-control" type="number" id="" name="age" value="{{ dbData.age }}" required min="1" max="200">
+          </div>
+          <div class="form-group">
+            <label for="">remark</label>
+            <input class="form-control" type="text" id="" name="remark" value="{{ dbData.remark }}">
+          </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
